@@ -419,7 +419,7 @@ ${
                 Train Your Voice
               </h1>
               <p className="text-[#71767B] max-w-lg mx-auto text-lg">
-                Reply to these tweets in your <b>natural style</b>. This "locks"
+                Reply to these tweets in your <b>natural style</b>. This locks
                 your persona for the AI.
               </p>
             </div>

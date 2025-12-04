@@ -70,6 +70,7 @@ export async function POST(req: Request) {
     });
 
     try {
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
       await (client.subscriptions as any).cancel(subscriptionId);
     } catch {}
 

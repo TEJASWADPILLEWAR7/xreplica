@@ -86,7 +86,7 @@ export default function CancelSubscriptionButton() {
             </button>
 
             <h3 className="text-xl font-bold text-[#E7E9EA] mb-2">
-              We're sorry to see you go
+              {`We're sorry to see you go`}
             </h3>
             <p className="text-sm text-[#71767B] mb-6">
               Help us improve by sharing why you are cancelling.
@@ -97,10 +97,9 @@ export default function CancelSubscriptionButton() {
                 <label
                   key={reason}
                   className={`flex items-center gap-3 p-3 rounded-xl border cursor-pointer transition-all ${
-                    {
-                      true: "border-[#1D9BF0] bg-[#1D9BF0]/10",
-                      false: "border-[#2F3336] hover:bg-[#2F3336]/50",
-                    }[selectedReason === reason]
+                    selectedReason === reason
+                      ? "border-[#1D9BF0] bg-[#1D9BF0]/10"
+                      : "border-[#2F3336] hover:bg-[#2F3336]/50"
                   }`}
                 >
                   <input

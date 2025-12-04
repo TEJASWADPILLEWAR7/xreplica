@@ -192,8 +192,8 @@ export default async function LandingPage() {
                 3. Start Replying
               </h3>
               <p className="text-sm text-[#71767B] leading-relaxed">
-                Click "AI Reply" on any post. It reads the tweet context to
-                write the perfect response.
+                {`Click "AI Reply" on any post. It reads the tweet context to
+                write the perfect response.`}
               </p>
             </div>
           </div>
@@ -281,8 +281,8 @@ export default async function LandingPage() {
                   Generic AI
                 </div>
                 <p className="text-[#71767B] italic text-sm leading-relaxed">
-                  "That is a very interesting perspective! I agree completely
-                  with your points on marketing."
+                  That is a very interesting perspective! I agree completely
+                  with your points on marketing.
                 </p>
               </div>
               <div className="hidden md:block w-px bg-[#2F3336] self-stretch"></div>
@@ -291,8 +291,8 @@ export default async function LandingPage() {
                   XReplica Way <CheckCircle2 className="w-3 h-3" />
                 </div>
                 <p className="text-[#E7E9EA] font-medium text-sm leading-relaxed">
-                  "Marketing is just distribution with a better story. Engineers
-                  ignore this at their own peril."
+                  Marketing is just distribution with a better story. Engineers
+                  ignore this at their own peril.
                 </p>
               </div>
             </div>
@@ -303,7 +303,7 @@ export default async function LandingPage() {
                   Generic AI
                 </div>
                 <p className="text-[#71767B] italic text-sm leading-relaxed">
-                  "Wow, great success! Keep grinding and you will make it! 🚀🚀"
+                  Wow, great success! Keep grinding and you will make it! 🚀🚀
                 </p>
               </div>
               <div className="hidden md:block w-px bg-[#2F3336] self-stretch"></div>
@@ -312,7 +312,7 @@ export default async function LandingPage() {
                   XReplica Way <CheckCircle2 className="w-3 h-3" />
                 </div>
                 <p className="text-[#E7E9EA] font-medium text-sm leading-relaxed">
-                  "The first $1k is harder than the next $10k. Nice work. 🚀"
+                  The first $1k is harder than the next $10k. Nice work. 🚀
                 </p>
               </div>
             </div>

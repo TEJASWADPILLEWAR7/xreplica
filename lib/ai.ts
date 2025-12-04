@@ -27,7 +27,7 @@ async function urlToGenerativePart(url: string) {
     return null;
   }
 }
-
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
 export async function analyzeTone(data: any) {
   try {
     let prompt = STYLE_ANALYSIS_PROMPT;
@@ -48,12 +48,11 @@ export async function analyzeTone(data: any) {
       model: "gemini-2.0-flash-exp",
       contents: prompt,
       config: {
-        // @ts-ignore
         thinkingConfig: { thinkingBudget: 0 },
       },
     });
 
-    let analysis = response.text;
+    const analysis = response.text;
     if (!analysis) throw new Error("Empty analysis");
     return analysis.trim();
   } catch (error) {
@@ -75,8 +74,8 @@ export async function generateTweetReply(
 
   let promptText = REPLY_GENERATION_PROMPT.replace("{{tone_profile}}", profile);
   promptText = promptText.replace("{{tweet_to_reply}}", tweetContent);
-
-  let inputParts: any[] = [promptText];
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  const inputParts: any[] = [promptText];
   let imageProcessed = false;
 
   if (imageUrl) {
@@ -94,12 +93,11 @@ export async function generateTweetReply(
       model: "gemini-2.0-flash-exp",
       contents: inputParts,
       config: {
-        // @ts-ignore
         thinkingConfig: { thinkingBudget: 0 },
       },
     });
 
-    let rawReply = response.text || "";
+    const rawReply = response.text || "";
 
     // Error Recovery
     const isError =

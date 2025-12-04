@@ -35,7 +35,7 @@ export async function POST(req: Request) {
 
     const appUrl = process.env.NEXT_PUBLIC_APP_URL || "http://localhost:3000";
     const returnUrl = `${appUrl}/dashboard?payment=success`;
-
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
     const session: any = await client.checkoutSessions.create({
       product_cart: [{ product_id: productId, quantity: 1 }],
       customer: {
@@ -54,6 +54,7 @@ export async function POST(req: Request) {
     }
 
     return NextResponse.json({ url: checkoutUrl });
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
   } catch (error: any) {
     return NextResponse.json(
       { error: error.message || "Payment Initialization Failed" },
