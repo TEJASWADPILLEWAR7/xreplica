@@ -1,65 +1,471 @@
+import Link from "next/link";
 import Image from "next/image";
+import {
+  CheckCircle2,
+  Chrome,
+  MessageSquare,
+  TrendingUp,
+  Shield,
+  Zap,
+  Star,
+  Clock,
+  Twitter,
+  ChevronDown,
+} from "lucide-react";
+import { auth } from "@clerk/nextjs/server";
 
-export default function Home() {
+export default async function LandingPage() {
+  const { userId } = await auth();
+  const ctaLink = userId ? "/onboarding" : "/sign-up?redirect_url=/onboarding";
+
   return (
-    <div className="flex min-h-screen items-center justify-center bg-zinc-50 font-sans dark:bg-black">
-      <main className="flex min-h-screen w-full max-w-3xl flex-col items-center justify-between py-32 px-16 bg-white dark:bg-black sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={100}
-          height={20}
-          priority
-        />
-        <div className="flex flex-col items-center gap-6 text-center sm:items-start sm:text-left">
-          <h1 className="max-w-xs text-3xl font-semibold leading-10 tracking-tight text-black dark:text-zinc-50">
-            To get started, edit the page.tsx file.
-          </h1>
-          <p className="max-w-md text-lg leading-8 text-zinc-600 dark:text-zinc-400">
-            Looking for a starting point or more instructions? Head over to{" "}
-            <a
-              href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
+    <div className="flex flex-col min-h-screen bg-black text-[#E7E9EA] font-sans selection:bg-[#1D9BF0] selection:text-white overflow-x-hidden">
+      <header className="sticky top-0 z-50 w-full border-b border-[#2F3336] bg-black/80 backdrop-blur-md">
+        <div className="max-w-6xl mx-auto px-6 h-16 flex items-center justify-between">
+          <div className="text-lg font-semibold tracking-tight text-[#E7E9EA]">
+            XReplica
+          </div>
+
+          <nav className="hidden md:flex gap-8 text-sm font-medium text-[#71767B]">
+            <Link
+              href="#features"
+              className="hover:text-[#1D9BF0] transition-colors"
             >
-              Templates
-            </a>{" "}
-            or the{" "}
-            <a
-              href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
+              Features
+            </Link>
+            <Link
+              href="#how-it-works"
+              className="hover:text-[#1D9BF0] transition-colors"
             >
-              Learning
-            </a>{" "}
-            center.
-          </p>
+              How it Works
+            </Link>
+            <Link
+              href="#pricing"
+              className="hover:text-[#1D9BF0] transition-colors"
+            >
+              Pricing
+            </Link>
+            <Link
+              href="#faq"
+              className="hover:text-[#1D9BF0] transition-colors"
+            >
+              FAQ
+            </Link>
+          </nav>
+
+          <div className="flex gap-4 items-center">
+            {userId ? (
+              <Link
+                href="/dashboard"
+                className="hidden md:block text-sm font-medium text-[#71767B] hover:text-[#E7E9EA]"
+              >
+                Dashboard
+              </Link>
+            ) : (
+              <Link
+                href="/sign-in"
+                className="hidden md:block text-sm font-medium text-[#71767B] hover:text-[#E7E9EA]"
+              >
+                Login
+              </Link>
+            )}
+
+            <Link
+              href={ctaLink}
+              className="btn bg-[#E7E9EA] text-black hover:bg-[#dcdede] text-xs px-5 py-2.5 rounded-full font-medium transition-all hover:-translate-y-0.5"
+            >
+              Start Free Trial
+            </Link>
+          </div>
         </div>
-        <div className="flex flex-col gap-4 text-base font-medium sm:flex-row">
-          <a
-            className="flex h-12 w-full items-center justify-center gap-2 rounded-full bg-foreground px-5 text-background transition-colors hover:bg-[#383838] dark:hover:bg-[#ccc] md:w-[158px]"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={16}
-              height={16}
-            />
-            Deploy Now
-          </a>
-          <a
-            className="flex h-12 w-full items-center justify-center rounded-full border border-solid border-black/[.08] px-5 transition-colors hover:border-transparent hover:bg-black/[.04] dark:border-white/[.145] dark:hover:bg-[#1a1a1a] md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Documentation
-          </a>
-        </div>
+      </header>
+
+      <main className="flex-1">
+        <section className="relative pt-24 pb-16 px-6 text-center overflow-hidden">
+          <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[600px] h-[600px] bg-[#1D9BF0]/10 rounded-full blur-[100px] -z-10 pointer-events-none" />
+
+          <div className="max-w-3xl mx-auto space-y-6">
+            <div className="inline-flex items-center rounded-full border border-[#1D9BF0]/20 bg-[#1D9BF0]/5 px-3 py-1 text-xs text-[#1D9BF0] font-medium mb-2">
+              <span className="flex h-1.5 w-1.5 rounded-full bg-[#1D9BF0] mr-2 animate-pulse"></span>
+              v1.0 Now Available for Chrome
+            </div>
+
+            <h1 className="text-5xl md:text-6xl font-bold tracking-tight text-[#E7E9EA] leading-[1.15]">
+              AI that replies on X <br />
+              <span className="text-[#1D9BF0]">exactly like you.</span>
+            </h1>
+
+            <p className="text-lg text-[#71767B] max-w-xl mx-auto leading-relaxed">
+              Grow faster without writing replies manually. Train your own AI
+              clone in seconds and engage with 10x more accounts daily.
+            </p>
+
+            <div className="pt-8 flex flex-col sm:flex-row justify-center gap-4">
+              <Link
+                href="https://chrome.google.com/webstore"
+                target="_blank"
+                className="btn h-12 px-8 text-sm rounded-full bg-[#1D9BF0] hover:bg-[#1A8CD8] text-white transition-all flex items-center justify-center gap-2 font-medium hover:-translate-y-0.5 shadow-lg shadow-[#1D9BF0]/20"
+              >
+                <Chrome className="w-4 h-4" />
+                Add to Chrome
+              </Link>
+              <Link
+                href="/pricing"
+                className="btn h-12 px-8 text-sm rounded-full border border-[#2F3336] bg-black hover:bg-[#16181C] text-[#E7E9EA] font-medium transition-all hover:-translate-y-0.5"
+              >
+                View Pricing
+              </Link>
+            </div>
+          </div>
+        </section>
+
+        <section className="py-16 border-y border-[#2F3336] bg-black overflow-hidden relative">
+          <div className="text-center mb-10">
+            <p className="text-xs font-bold text-[#71767B] uppercase tracking-widest">
+              Real replies generated by XReplica
+            </p>
+          </div>
+
+          <div className="relative flex overflow-x-hidden w-full group">
+            <div className="animate-scroll flex gap-6 whitespace-nowrap py-2 px-4 group-hover:[animation-play-state:paused]">
+              {[1, 2, 3, 1, 2, 3, 1, 2, 3].map((i, idx) => (
+                <div
+                  key={idx}
+                  className="relative w-[280px] h-auto rounded-xl overflow-hidden border border-[#2F3336] shrink-0 hover:scale-[1.02] transition-transform duration-300"
+                >
+                  <Image
+                    src={`/screenshot${i}.jpg`}
+                    alt="X-Replica Reply Example"
+                    width={400}
+                    height={250}
+                    className="object-cover w-full h-full"
+                  />
+                </div>
+              ))}
+            </div>
+            <div className="absolute top-0 left-0 w-32 h-full bg-gradient-to-r from-black to-transparent z-10 pointer-events-none"></div>
+            <div className="absolute top-0 right-0 w-32 h-full bg-gradient-to-l from-black to-transparent z-10 pointer-events-none"></div>
+          </div>
+        </section>
+
+        <section id="how-it-works" className="py-24 px-6 max-w-5xl mx-auto">
+          <div className="text-center mb-16 space-y-3">
+            <h2 className="text-3xl font-bold text-[#E7E9EA]">How it works</h2>
+            <p className="text-[#71767B]">
+              Three steps to your automated growth engine.
+            </p>
+          </div>
+
+          <div className="grid md:grid-cols-3 gap-8 relative">
+            <div className="hidden md:block absolute top-12 left-[15%] right-[15%] h-px bg-[#2F3336] -z-10 border-t border-dashed border-[#2F3336]"></div>
+
+            <div className="bg-[#16181C] p-8 rounded-2xl border border-[#2F3336] hover:border-[#1D9BF0] transition-all text-center group">
+              <div className="w-16 h-16 mx-auto bg-black rounded-full flex items-center justify-center text-[#71767B] mb-6 group-hover:scale-110 transition-transform border border-[#2F3336]">
+                <Chrome className="w-8 h-8" />
+              </div>
+              <h3 className="font-bold text-lg mb-2 text-[#E7E9EA]">
+                1. Install Extension
+              </h3>
+              <p className="text-sm text-[#71767B] leading-relaxed">
+                Add to Chrome. It securely syncs with your dashboard instantly.
+              </p>
+            </div>
+
+            <div className="bg-[#16181C] p-8 rounded-2xl border border-[#2F3336] hover:border-[#1D9BF0] transition-all text-center group">
+              <div className="w-16 h-16 mx-auto bg-black rounded-full flex items-center justify-center text-[#71767B] mb-6 group-hover:scale-110 transition-transform border border-[#2F3336]">
+                <MessageSquare className="w-8 h-8" />
+              </div>
+              <h3 className="font-bold text-lg mb-2 text-[#E7E9EA]">
+                2. Connect X
+              </h3>
+              <p className="text-sm text-[#71767B] leading-relaxed">
+                Log in securely. We never see your password, just the page
+                content.
+              </p>
+            </div>
+
+            <div className="bg-[#16181C] p-8 rounded-2xl border border-[#2F3336] hover:border-[#1D9BF0] transition-all text-center group">
+              <div className="w-16 h-16 mx-auto bg-black rounded-full flex items-center justify-center text-[#71767B] mb-6 group-hover:scale-110 transition-transform border border-[#2F3336]">
+                <Zap className="w-8 h-8" />
+              </div>
+              <h3 className="font-bold text-lg mb-2 text-[#E7E9EA]">
+                3. Start Replying
+              </h3>
+              <p className="text-sm text-[#71767B] leading-relaxed">
+                Click "AI Reply" on any post. It reads the tweet context to
+                write the perfect response.
+              </p>
+            </div>
+          </div>
+        </section>
+
+        <section
+          id="features"
+          className="py-24 bg-black border-y border-[#2F3336]"
+        >
+          <div className="max-w-5xl mx-auto px-6">
+            <div className="text-center mb-16">
+              <h2 className="text-3xl font-bold text-[#E7E9EA]">
+                Why top creators use XReplica
+              </h2>
+            </div>
+
+            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+              {[
+                {
+                  icon: MessageSquare,
+                  title: "Voice Cloning",
+                  desc: "Learns your specific tone, vocabulary, and sentence structure.",
+                },
+                {
+                  icon: TrendingUp,
+                  title: "Smart Context",
+                  desc: "Reads images and memes to write relevant comments.",
+                },
+                {
+                  icon: Shield,
+                  title: "Safe + Rate Limited",
+                  desc: "Built-in protection to keep your account safe from spam flags.",
+                },
+                {
+                  icon: Star,
+                  title: "Analytics",
+                  desc: "Track how many replies you generate daily.",
+                },
+                {
+                  icon: CheckCircle2,
+                  title: "Preset Tones",
+                  desc: "Switch between Witty, Insightful, or Supportive modes.",
+                },
+                {
+                  icon: Clock,
+                  title: "Time Saver",
+                  desc: "Clear your notifications in minutes, not hours.",
+                },
+              ].map((feature, i) => (
+                <div
+                  key={i}
+                  className="flex gap-4 p-5 rounded-xl bg-[#16181C] border border-[#2F3336] hover:border-[#1D9BF0] transition-colors hover:bg-[#1D9BF0]/5"
+                >
+                  <div className="mt-1 shrink-0">
+                    <div className="p-2 bg-black border border-[#2F3336] text-[#1D9BF0] rounded-lg">
+                      <feature.icon className="w-5 h-5" />
+                    </div>
+                  </div>
+                  <div>
+                    <h4 className="font-bold text-sm text-[#E7E9EA]">
+                      {feature.title}
+                    </h4>
+                    <p className="text-xs text-[#71767B] mt-1 leading-relaxed">
+                      {feature.desc}
+                    </p>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        <section className="py-24 px-6 bg-black">
+          <div className="max-w-4xl mx-auto text-center mb-12">
+            <h2 className="text-3xl font-bold text-[#E7E9EA] mb-4">
+              See the quality before you try it
+            </h2>
+            <p className="text-sm text-[#71767B]">Human vs AI Tone Match</p>
+          </div>
+
+          <div className="max-w-3xl mx-auto space-y-6">
+            <div className="bg-[#16181C] p-8 rounded-2xl border border-[#2F3336] flex flex-col md:flex-row gap-8 items-start">
+              <div className="flex-1 space-y-2">
+                <div className="text-[10px] font-bold text-[#71767B] uppercase tracking-wider">
+                  Generic AI
+                </div>
+                <p className="text-[#71767B] italic text-sm leading-relaxed">
+                  "That is a very interesting perspective! I agree completely
+                  with your points on marketing."
+                </p>
+              </div>
+              <div className="hidden md:block w-px bg-[#2F3336] self-stretch"></div>
+              <div className="flex-1 space-y-2">
+                <div className="text-[10px] font-bold text-[#1D9BF0] uppercase tracking-wider flex items-center gap-2">
+                  XReplica Way <CheckCircle2 className="w-3 h-3" />
+                </div>
+                <p className="text-[#E7E9EA] font-medium text-sm leading-relaxed">
+                  "Marketing is just distribution with a better story. Engineers
+                  ignore this at their own peril."
+                </p>
+              </div>
+            </div>
+
+            <div className="bg-[#16181C] p-8 rounded-2xl border border-[#2F3336] flex flex-col md:flex-row gap-8 items-start">
+              <div className="flex-1 space-y-2">
+                <div className="text-[10px] font-bold text-[#71767B] uppercase tracking-wider">
+                  Generic AI
+                </div>
+                <p className="text-[#71767B] italic text-sm leading-relaxed">
+                  "Wow, great success! Keep grinding and you will make it! 🚀🚀"
+                </p>
+              </div>
+              <div className="hidden md:block w-px bg-[#2F3336] self-stretch"></div>
+              <div className="flex-1 space-y-2">
+                <div className="text-[10px] font-bold text-[#1D9BF0] uppercase tracking-wider flex items-center gap-2">
+                  XReplica Way <CheckCircle2 className="w-3 h-3" />
+                </div>
+                <p className="text-[#E7E9EA] font-medium text-sm leading-relaxed">
+                  "The first $1k is harder than the next $10k. Nice work. 🚀"
+                </p>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section
+          id="pricing"
+          className="py-24 px-6 bg-black border-t border-[#2F3336]"
+        >
+          <div className="max-w-5xl mx-auto">
+            <div className="text-center mb-16">
+              <h2 className="text-3xl font-bold text-[#E7E9EA]">
+                Simple Pricing
+              </h2>
+            </div>
+
+            <div className="flex justify-center">
+              <div className="bg-[#16181C] p-10 rounded-3xl border border-[#1D9BF0] relative overflow-hidden max-w-md w-full text-center shadow-[0_0_50px_-12px_rgba(29,155,240,0.2)]">
+                <div className="absolute top-0 right-0 bg-[#1D9BF0] text-white text-[10px] font-bold px-3 py-1 rounded-bl-xl uppercase tracking-wide">
+                  Most Popular
+                </div>
+
+                <h3 className="font-bold text-2xl mb-2 text-[#E7E9EA]">
+                  Pro Creator
+                </h3>
+                <p className="text-[#71767B] mb-8 text-sm">
+                  Everything you need to grow.
+                </p>
+
+                <div className="text-5xl font-bold mb-8 text-[#E7E9EA] tracking-tight">
+                  $9
+                  <span className="text-lg font-normal text-[#71767B]">
+                    /mo
+                  </span>
+                </div>
+
+                <ul className="space-y-4 mb-10 text-left mx-auto">
+                  {[
+                    "Unlimited Replies",
+                    "Custom Voice Training",
+                    "Image & Video Context",
+                    "Priority Support",
+                  ].map((feature, i) => (
+                    <li key={i} className="flex gap-3 text-[#E7E9EA] text-sm">
+                      <CheckCircle2 className="w-5 h-5 text-[#1D9BF0] shrink-0" />{" "}
+                      <span className="font-medium">{feature}</span>
+                    </li>
+                  ))}
+                </ul>
+
+                <Link
+                  href={ctaLink}
+                  className="btn bg-[#E7E9EA] hover:bg-white text-black w-full justify-center h-14 rounded-xl font-bold text-base transition-all hover:-translate-y-0.5"
+                >
+                  Start 3-Day Free Trial
+                </Link>
+                <p className="text-xs text-[#71767B] mt-4">
+                  Cancel anytime. No questions asked.
+                </p>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section id="faq" className="py-24 px-6 bg-black">
+          <div className="max-w-2xl mx-auto space-y-12">
+            <h2 className="text-3xl font-bold text-center text-[#E7E9EA]">
+              Frequently Asked Questions
+            </h2>
+            <div className="space-y-4">
+              {[
+                {
+                  q: "Is it safe to use on X?",
+                  a: "Yes. X-Replica uses the Chrome Accessibility API to interact with the page, simulating a real user pasting text. We also enforce strict rate limits.",
+                },
+                {
+                  q: "Will I get banned?",
+                  a: "We prioritize safety. By limiting replies and ensuring high-quality, contextual content, the risk is minimal. Use responsibly.",
+                },
+                {
+                  q: "Does it store my login?",
+                  a: "Never. The extension works on top of your already logged-in browser session. We never see or store your password.",
+                },
+                {
+                  q: "Can I pause auto-replies?",
+                  a: "Replies are never automatic. You always click the button to generate, and you always review before posting. You are in control.",
+                },
+              ].map((item, i) => (
+                <details
+                  key={i}
+                  className="group bg-[#16181C] rounded-xl border border-[#2F3336] overflow-hidden open:border-[#1D9BF0]/30 transition-all duration-300"
+                >
+                  <summary className="flex cursor-pointer items-center justify-between p-6 font-medium text-[#E7E9EA] list-none hover:text-white">
+                    {item.q}
+                    <ChevronDown className="w-4 h-4 text-[#71767B] transition-transform duration-300 group-open:rotate-180" />
+                  </summary>
+                  <div className="px-6 pb-6 text-sm text-[#71767B] leading-relaxed">
+                    {item.a}
+                  </div>
+                </details>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        <section className="py-32 px-6 bg-[#16181C] text-center relative overflow-hidden border-t border-[#2F3336]">
+          <div className="max-w-3xl mx-auto space-y-8 relative z-10">
+            <h2 className="text-4xl md:text-5xl font-bold text-[#E7E9EA] tracking-tight leading-tight">
+              Start growing on X today — <br />
+              <span className="text-[#1D9BF0]">with zero effort.</span>
+            </h2>
+            <div className="flex justify-center pt-4">
+              <Link
+                href="https://chrome.google.com/webstore"
+                target="_blank"
+                className="btn h-14 px-10 text-base rounded-full bg-[#E7E9EA] text-black hover:bg-white font-bold transition-all flex items-center gap-2 hover:-translate-y-0.5"
+              >
+                <Chrome className="w-5 h-5" />
+                Add to Chrome
+              </Link>
+            </div>
+            <p className="text-sm text-[#71767B]">
+              3-day free trial • No credit card required to install
+            </p>
+          </div>
+        </section>
       </main>
+
+      <footer className="py-12 bg-black border-t border-[#2F3336]">
+        <div className="max-w-6xl mx-auto px-6 flex flex-col md:flex-row justify-between items-center gap-6">
+          <div className="flex items-center gap-2 font-bold text-[#E7E9EA] text-lg font-serif">
+            XReplica
+          </div>
+          <div className="flex gap-8 text-sm text-[#71767B]">
+            <Link
+              href="https://x.com/TWadpillewar"
+              target="_blank"
+              className="hover:text-[#1D9BF0] transition-colors flex items-center gap-2"
+            >
+              <Twitter className="w-4 h-4" />
+              @TWadpillewar
+            </Link>
+            <Link href="#" className="hover:text-[#1D9BF0] transition-colors">
+              Privacy
+            </Link>
+            <Link href="#" className="hover:text-[#1D9BF0] transition-colors">
+              Terms
+            </Link>
+          </div>
+          <p className="text-xs text-[#71767B]">© 2025 XReplica.</p>
+        </div>
+      </footer>
     </div>
   );
 }

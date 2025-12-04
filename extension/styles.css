@@ -1,0 +1,27 @@
+.x-replica-button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  margin-left: 12px; /* Space from standard icons */
+  padding: 4px 12px;
+  border-radius: 9999px;
+  background-color: rgba(29, 155, 240, 0.1); /* Twitter Blue tint */
+  color: #1d9bf0;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  font-size: 13px;
+  font-weight: 600;
+  transition: background-color 0.2s;
+  height: 24px; /* Match standard icon height approx */
+  align-self: center;
+}
+
+.x-replica-button:hover {
+  background-color: rgba(29, 155, 240, 0.2);
+}
+
+.x-rep-icon {
+  display: flex;
+  align-items: center;
+  margin-right: 4px;
+}
