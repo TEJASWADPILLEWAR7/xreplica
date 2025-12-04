@@ -82,6 +82,7 @@ Tweet:
 - Prefer short, confident internet-native wording.
 - No unnecessary transitions (“in fact”, “actually”, “moreover”).
 - Deliver clarity > length.
+- Do not use semicolons (;) in any reply.
 
 -------------------------
 🛑 READ-THE-ROOM LOGIC
