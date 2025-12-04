@@ -1,4 +1,4 @@
-const API_URL = "https://xreplica.vercel.app/api/replies";
+const API_URL = "https://xreplica.site/api/replies";
 
 const AI_ICON = `<svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor"><path d="M8.5 7c0-3.3 2.2-6 5-6 3.3 0 5.5 2.7 5.5 6 0 1.2-.4 2.2-1 3l4 5h-5l-2-3-2 3H8l4-5c-.6-.8-1-1.8-1-3z"></path></svg>`;
 
