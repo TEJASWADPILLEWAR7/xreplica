@@ -131,19 +131,23 @@ export default async function LandingPage() {
               {[1, 2, 3, 1, 2, 3, 1, 2, 3].map((i, idx) => (
                 <div
                   key={idx}
-                  className="relative w-[280px] h-auto rounded-xl overflow-hidden border border-[#2F3336] shrink-0 hover:scale-[1.02] transition-transform duration-300"
+                  className="relative w-[280px] h-[180px] rounded-xl overflow-hidden border border-[#2F3336] shrink-0 hover:scale-[1.02] transition-transform duration-300"
                 >
                   <Image
-                    src={`/screenshot${i}.jpg`}
+                    src={`/screenshot${i}-new.jpg`}
                     alt="X-Replica Reply Example"
-                    width={400}
-                    height={250}
-                    className="object-cover w-full h-full"
+                    fill
+                    sizes="280px"
+                    className="object-cover"
                   />
                 </div>
               ))}
             </div>
+
+            {/* Left Gradient Fade */}
             <div className="absolute top-0 left-0 w-32 h-full bg-gradient-to-r from-black to-transparent z-10 pointer-events-none"></div>
+
+            {/* Right Gradient Fade */}
             <div className="absolute top-0 right-0 w-32 h-full bg-gradient-to-l from-black to-transparent z-10 pointer-events-none"></div>
           </div>
         </section>
