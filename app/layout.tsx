@@ -5,6 +5,9 @@ import "./globals.css";
 export const metadata: Metadata = {
   title: "X-Replica",
   description: "Generate Twitter replies in your personal voice.",
+  icons: {
+    icon: "/logo.png", // <-- your logo
+  },
 };
 
 export default function RootLayout({

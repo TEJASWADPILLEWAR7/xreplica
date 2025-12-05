@@ -48,7 +48,7 @@ body {
 }
 
 .animate-scroll {
-  animation: scroll 25s linear infinite;
+  animation: scroll 45s linear infinite;
 }
 .animate-scroll {
   animation-play-state: running;
