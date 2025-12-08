@@ -44,3 +44,17 @@ export const cancellationFeedback = pgTable("cancellation_feedback", {
   details: text("details"),
   createdAt: timestamp("created_at").defaultNow().notNull(),
 });
+
+export const jobs = pgTable("jobs", {
+  id: uuid("id").defaultRandom().primaryKey(),
+  userId: uuid("user_id")
+    .references(() => users.id)
+    .notNull(),
+  tweetText: text("tweet_text").notNull(),
+  imageUrl: text("image_url"),
+  status: text("status").default("pending").notNull(),
+  reply: text("reply"),
+  error: text("error"),
+  createdAt: timestamp("created_at").defaultNow().notNull(),
+  updatedAt: timestamp("updated_at").defaultNow().notNull(),
+});
