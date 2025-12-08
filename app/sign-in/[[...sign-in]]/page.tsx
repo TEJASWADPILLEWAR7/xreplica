@@ -8,10 +8,13 @@ export default function Page() {
         routing="path"
         appearance={{
           elements: {
-            footerAction: "hidden",
+            footer: "hidden",
           },
         }}
         signUpUrl="/sign-up"
+        unsafeMetadata={{
+          strategy: "password",
+        }}
       />
     </div>
   );
