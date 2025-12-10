@@ -1,7 +1,5 @@
 const API_URL = "https://www.xreplica.site/api/replies";
 
-const AI_ICON = `<svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor"><path d="M8.5 7c0-3.3 2.2-6 5-6 3.3 0 5.5 2.7 5.5 6 0 1.2-.4 2.2-1 3l4 5h-5l-2-3-2 3H8l4-5c-.6-.8-1-1.8-1-3z"></path></svg>`;
-
 async function typeWriter(text, element) {
   element.focus();
 
@@ -64,9 +62,9 @@ function createAIButton() {
   btn.setAttribute("role", "button");
   btn.setAttribute("tabindex", "0");
   btn.innerHTML = `
-    <div class="x-rep-icon">${AI_ICON}</div>
-    <span class="x-rep-text">AI Reply</span>
-  `;
+  <span class="x-rep-text">Reply</span>
+`;
+
   return btn;
 }
 

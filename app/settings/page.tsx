@@ -102,7 +102,7 @@ export default async function SettingsPage() {
               <div>
                 <h2 className="font-bold">AI Voice Profile</h2>
                 <p className="text-sm text-[#71767B]">
-                  How Gemini understands your style.
+                  How AI understands your style.
                 </p>
               </div>
             </div>

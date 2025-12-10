@@ -1,31 +1,21 @@
 {
   "manifest_version": 3,
   "name": "X-Replica",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "Generate AI replies in your own voice.",
   "permissions": ["storage"],
-  "host_permissions": [
-    "https://twitter.com/*",
-    "https://x.com/*",
-    "https://www.xreplica.site/*",
-    "http://localhost:3000/*",
-    "https://xreplica.vercel.app/*"
-  ],
+  "host_permissions": ["https://x.com/*", "https://www.xreplica.site/*"],
   "background": {
     "service_worker": "background.js"
   },
   "content_scripts": [
     {
-      "matches": ["https://twitter.com/*", "https://x.com/*"],
+      "matches": ["https://x.com/*"],
       "js": ["contentScript.js"],
       "css": ["styles.css"]
     },
     {
-      "matches": [
-        "https://www.xreplica.site/dashboard*",
-        "http://localhost:3000/dashboard*",
-        "https://xreplica.vercel.app/dashboard*"
-      ],
+      "matches": ["https://www.xreplica.site/dashboard*"],
       "js": ["authSync.js"]
     }
   ],
@@ -35,7 +25,7 @@
   "web_accessible_resources": [
     {
       "resources": ["styles.css", "icon.png"],
-      "matches": ["https://twitter.com/*", "https://x.com/*"]
+      "matches": ["https://x.com/*"]
     }
   ]
 }
