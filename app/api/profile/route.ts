@@ -62,7 +62,7 @@ export async function POST(req: Request) {
     if (subRecord.length === 0) {
       // Create a 3-day free trial automatically (No payment required)
       const trialEndDate = new Date();
-      trialEndDate.setDate(trialEndDate.getDate() + 3);
+      trialEndDate.setDate(trialEndDate.getDate() + 3); // EXACTLY 3 DAYS
 
       await db.insert(subscriptions).values({
         userId: internalUserId,

@@ -2,7 +2,7 @@ import { auth, currentUser } from "@clerk/nextjs/server";
 import { redirect } from "next/navigation";
 import { db } from "@/lib/db";
 import { users, subscriptions } from "@/lib/drizzle/schema";
-import { eq } from "drizzle-orm";
+import { eq, sql } from "drizzle-orm";
 import { v4 as uuidv4 } from "uuid";
 import {
   Zap,
@@ -14,6 +14,7 @@ import {
 } from "lucide-react";
 import { SignOutButton } from "@clerk/nextjs";
 import Link from "next/link";
+import CheckoutButton from "../settings/CheckoutButton";
 
 export default async function Dashboard() {
   const { userId } = await auth();
@@ -96,6 +97,7 @@ export default async function Dashboard() {
 
   let planName = "Free Trial (Not Started)";
   let planColorClass = "text-[#71767B]";
+  let showUpgrade = false;
   const now = new Date();
 
   if (subResult.length > 0) {
@@ -105,9 +107,11 @@ export default async function Dashboard() {
       if (sub.nextBillingDate && sub.nextBillingDate > now) {
         planName = "Pro Plan (Active)";
         planColorClass = "text-green-500";
+        showUpgrade = false;
       } else {
         planName = "Pro Plan Expired";
         planColorClass = "text-red-500";
+        showUpgrade = true;
       }
     } else if (
       sub.status === "trialing" &&
@@ -119,13 +123,19 @@ export default async function Dashboard() {
       );
       planName = `Free Trial (${daysLeft} Days Left)`;
       planColorClass = "text-[#1D9BF0]";
+      showUpgrade = true;
     } else if (sub.status === "cancelled") {
       planName = "Cancelled";
       planColorClass = "text-red-500";
+      showUpgrade = true;
     } else {
       planName = "Expired / Inactive";
       planColorClass = "text-red-500";
+      showUpgrade = true;
     }
+  } else {
+    // No subscription record found (e.g. initial state before trial creation logic runs or if deleted)
+    showUpgrade = true;
   }
 
   return (
@@ -202,20 +212,28 @@ export default async function Dashboard() {
             </div>
           </article>
 
-          <article className="bg-[#16181C] p-6 rounded-xl border border-[#2F3336] hover:border-[#22c55e] transition-colors group">
-            <div className="flex items-center gap-4 mb-4">
-              <div className="p-3 bg-black border border-[#2F3336] rounded-lg group-hover:border-[#22c55e] transition-colors">
-                <User className="w-6 h-6 text-green-500" />
-              </div>
-              <div>
-                <p className="text-sm text-[#71767B] font-medium">
-                  Current Plan
-                </p>
-                <h3 className={`text-lg font-bold ${planColorClass}`}>
-                  {planName}
-                </h3>
+          <article className="bg-[#16181C] p-6 rounded-xl border border-[#2F3336] hover:border-[#22c55e] transition-colors group flex flex-col justify-between">
+            <div>
+              <div className="flex items-center gap-4 mb-4">
+                <div className="p-3 bg-black border border-[#2F3336] rounded-lg group-hover:border-[#22c55e] transition-colors">
+                  <User className="w-6 h-6 text-green-500" />
+                </div>
+                <div>
+                  <p className="text-sm text-[#71767B] font-medium">
+                    Current Plan
+                  </p>
+                  <h3 className={`text-lg font-bold ${planColorClass}`}>
+                    {planName}
+                  </h3>
+                </div>
               </div>
             </div>
+
+            {showUpgrade && (
+              <div className="mt-2">
+                <CheckoutButton className="w-full" />
+              </div>
+            )}
           </article>
         </section>
 
