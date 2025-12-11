@@ -102,7 +102,7 @@ export default async function LandingPage() {
 
             <div className="pt-8 flex flex-col sm:flex-row justify-center gap-4">
               <Link
-                href="https://chrome.google.com/webstore"
+                href="https://chromewebstore.google.com/detail/x-replica/jjngegcjfjmnlenoiljkhhpbgikcifll?utm_source=item-share-cb"
                 target="_blank"
                 className="btn h-12 px-8 text-sm rounded-full bg-[#1D9BF0] hover:bg-[#1A8CD8] text-white transition-all flex items-center justify-center gap-2 font-medium hover:-translate-y-0.5 shadow-lg shadow-[#1D9BF0]/20"
               >
@@ -431,7 +431,7 @@ export default async function LandingPage() {
             </h2>
             <div className="flex justify-center pt-4">
               <Link
-                href="https://chrome.google.com/webstore"
+                href="https://chromewebstore.google.com/detail/x-replica/jjngegcjfjmnlenoiljkhhpbgikcifll?utm_source=item-share-cb"
                 target="_blank"
                 className="btn h-14 px-10 text-base rounded-full bg-[#E7E9EA] text-black hover:bg-white font-bold transition-all flex items-center gap-2 hover:-translate-y-0.5"
               >

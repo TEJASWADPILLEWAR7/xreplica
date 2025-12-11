@@ -111,7 +111,7 @@ export default function PricingPage() {
         {/* Chrome CTA */}
         <div className="pt-12 text-center">
           <Link
-            href="https://chrome.google.com/webstore"
+            href="https://chromewebstore.google.com/detail/x-replica/jjngegcjfjmnlenoiljkhhpbgikcifll?utm_source=item-share-cb"
             target="_blank"
             className="inline-flex items-center gap-2 px-6 py-3 rounded-full bg-[#1D9BF0] hover:bg-[#1A8CD8] text-white font-medium text-sm transition-all hover:-translate-y-0.5"
           >
