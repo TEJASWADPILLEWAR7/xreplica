@@ -11,6 +11,7 @@ import {
   LogOut,
   CheckCircle2,
   User,
+  Chrome, // Added Chrome icon
 } from "lucide-react";
 import { SignOutButton } from "@clerk/nextjs";
 import Link from "next/link";
@@ -237,17 +238,27 @@ export default async function Dashboard() {
           </article>
         </section>
 
-        <aside className="bg-[#16181C] border border-[#2F3336] rounded-xl p-6 mb-8 flex items-center gap-4 relative overflow-hidden">
+        <aside className="bg-[#16181C] border border-[#2F3336] rounded-xl p-6 mb-8 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 relative overflow-hidden">
           <div className="absolute left-0 top-0 bottom-0 w-1 bg-[#1D9BF0]" />
-          <div className="bg-[#1D9BF0]/10 p-3 rounded-full shrink-0">
-            <Settings className="w-5 h-5 text-[#1D9BF0]" />
+          <div className="flex items-center gap-4">
+            <div className="bg-[#1D9BF0]/10 p-3 rounded-full shrink-0">
+              <Chrome className="w-5 h-5 text-[#1D9BF0]" />
+            </div>
+            <div>
+              <h3 className="font-bold">Extension Ready</h3>
+              <p className="text-[#71767B] text-sm mt-1">
+                Sync your account and start generating replies on X.com.
+              </p>
+            </div>
           </div>
-          <div>
-            <h3 className="font-bold">Extension Connected</h3>
-            <p className="text-[#71767B] text-sm mt-1">
-              Your account is synced. Open X.com to start generating replies.
-            </p>
-          </div>
+          <Link
+            href="https://chromewebstore.google.com/detail/jjngegcjfjmnlenoiljkhhpbgikcifll?utm_source=item-share-cb"
+            target="_blank"
+            className="btn bg-[#E7E9EA] hover:bg-white text-black px-5 py-2.5 rounded-full font-bold text-sm flex items-center gap-2 transition-all hover:-translate-y-0.5 shrink-0"
+          >
+            <Chrome className="w-4 h-4" />
+            Download Extension
+          </Link>
         </aside>
 
         <section className="bg-[#16181C] border border-[#2F3336] rounded-2xl p-8">
