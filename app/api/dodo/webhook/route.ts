@@ -65,8 +65,22 @@ export async function POST(req: Request) {
       }
     }
 
+    // Handle Subscription Cancellation (External or Failed Payments)
+    if (type === "subscription.cancelled" || type === "subscription.failed") {
+      const subscriptionId = data.subscription_id;
+
+      if (subscriptionId) {
+        // Find subscription by paymentId (which stores subscription_id) and mark as cancelled
+        await db
+          .update(subscriptions)
+          .set({ status: "cancelled" })
+          .where(eq(subscriptions.paymentId, subscriptionId));
+      }
+    }
+
     return NextResponse.json({ received: true }, { status: 200 });
   } catch (error) {
+    console.error("Webhook Error:", error);
     return NextResponse.json(
       { error: "Webhook processing failed" },
       { status: 500 }

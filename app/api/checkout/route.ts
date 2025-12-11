@@ -22,7 +22,7 @@ export async function POST(req: Request) {
 
     const client = new DodoPayments({
       bearerToken: dodoKey,
-      environment: "test_mode",
+      environment: "live_mode",
     });
 
     const productId = process.env.DODO_PRODUCT_ID;
