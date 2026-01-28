@@ -41,7 +41,7 @@ export async function analyzeTone(data: any) {
     prompt = prompt.replace("{{examples}}", data.examples);
     prompt = prompt.replace(
       "{{tweets}}",
-      data.tweets || "No extra tweets provided."
+      data.tweets || "No extra tweets provided.",
     );
 
     const response = await ai.models.generateContent({
@@ -66,7 +66,7 @@ export async function generateTweetReply(
   tweet: string,
   toneProfile: string | null,
   imageUrl?: string,
-  isRetry: boolean = false
+  isRetry: boolean = false,
 ) {
   const startTime = Date.now();
   const profile = toneProfile || "Professional, casual, lowercase, witty.";
@@ -90,7 +90,7 @@ export async function generateTweetReply(
 
   try {
     const response = await ai.models.generateContent({
-      model: "gemini-2.0-flash-exp",
+      model: "gemini-3-flash-preview",
       contents: inputParts,
       config: {
         thinkingConfig: { thinkingBudget: 0 },
