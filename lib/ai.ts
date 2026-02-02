@@ -45,7 +45,7 @@ export async function analyzeTone(data: any) {
     );
 
     const response = await ai.models.generateContent({
-      model: "gemini-2.0-flash-exp",
+      model: "gemini-3-flash-preview",
       contents: prompt,
       config: {
         thinkingConfig: { thinkingBudget: 0 },
