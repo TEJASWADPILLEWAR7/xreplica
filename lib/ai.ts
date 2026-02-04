@@ -27,6 +27,7 @@ async function urlToGenerativePart(url: string) {
     return null;
   }
 }
+
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 export async function analyzeTone(data: any) {
   try {
@@ -44,12 +45,10 @@ export async function analyzeTone(data: any) {
       data.tweets || "No extra tweets provided.",
     );
 
+    // UPDATED: Removed unnecessary thinkingConfig
     const response = await ai.models.generateContent({
       model: "gemini-1.5-flash",
       contents: prompt,
-      config: {
-        thinkingConfig: { thinkingBudget: 0 },
-      },
     });
 
     const analysis = response.text;
@@ -89,12 +88,10 @@ export async function generateTweetReply(
   }
 
   try {
+    // UPDATED: Removed unnecessary thinkingConfig
     const response = await ai.models.generateContent({
       model: "gemini-1.5-flash",
       contents: inputParts,
-      config: {
-        thinkingConfig: { thinkingBudget: 0 },
-      },
     });
 
     const rawReply = response.text || "";
