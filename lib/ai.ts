@@ -45,7 +45,7 @@ export async function analyzeTone(data: any) {
     );
 
     const response = await ai.models.generateContent({
-      model: "gemini-1.5-flash",
+      model: "gemini-3-flash-preview",
       contents: prompt,
       config: {
         thinkingConfig: { thinkingBudget: 0 },
@@ -90,7 +90,7 @@ export async function generateTweetReply(
 
   try {
     const response = await ai.models.generateContent({
-      model: "gemini-1.5-flash",
+      model: "gemini-3-flash-preview",
       contents: inputParts,
       config: {
         thinkingConfig: { thinkingBudget: 0 },
